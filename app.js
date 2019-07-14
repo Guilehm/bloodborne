@@ -8,9 +8,9 @@ const app = new express()
 app.use(morgan('short'))
 app.use(helmet())
 
-const getItemsController = require('./controllers/get-items-controller')
+const getWeaponsController = require('./controllers/get-weapons-controller')
 
-app.get('/', getItemsController)
+app.get('/', getWeaponsController)
 
 const PORT = process.env.PORT || 4000
 
