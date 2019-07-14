@@ -1,0 +1,28 @@
+{
+  "name": "bloodborne",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guilehm/bloodborne.git"
+  },
+  "keywords": [
+    "fortnite"
+  ],
+  "author": "guile.hm@hotmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Guilehm/bloodborne/issues"
+  },
+  "homepage": "https://github.com/Guilehm/bloodborne#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "morgan": "^1.9.1",
+    "request": "^2.88.0"
+  }
+}
