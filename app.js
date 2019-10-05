@@ -8,10 +8,6 @@ const app = new express()
 app.use(morgan('short'))
 app.use(helmet())
 
-const getWeaponsController = require('./controllers/get-weapons-controller')
-
-app.get('/', getWeaponsController)
-
 const PORT = process.env.PORT || 4000
 
 app.listen(PORT, () => {
