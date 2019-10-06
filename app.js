@@ -32,12 +32,16 @@ const characterCreateController = require('./controllers/character-create-contro
 const characterDetailController = require('./controllers/character-detail-controller');
 const comicCreateController = require('./controllers/comic-create-controller');
 const comicDetailController = require('./controllers/comic-detail-controller');
+const storiesCreateController = require('./controllers/stories-create-controller');
+const storiesDetailController = require('./controllers/stories-detail-controller');
 
 
 app.get('/api/characters/:id/', characterDetailController);
 app.post('/api/characters/', characterCreateController);
 app.get('/api/comics/:id/', comicDetailController);
 app.post('/api/comics/', comicCreateController);
+app.get('/api/stories/:id/', storiesDetailController);
+app.post('/api/stories/', storiesCreateController);
 
 
 const PORT = process.env.PORT || 4000;
