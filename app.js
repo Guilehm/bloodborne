@@ -30,9 +30,14 @@ app.use(bodyParser.urlencoded({
 
 const characterCreateController = require('./controllers/character-create-controller');
 const characterDetailController = require('./controllers/character-detail-controller');
+const comicCreateController = require('./controllers/comic-create-controller');
+const comicDetailController = require('./controllers/comic-detail-controller');
+
 
 app.get('/api/characters/:id/', characterDetailController);
 app.post('/api/characters/', characterCreateController);
+app.get('/api/comics/:id/', comicDetailController);
+app.post('/api/comics/', comicCreateController);
 
 
 const PORT = process.env.PORT || 4000;

@@ -1,8 +1,6 @@
 const Character = require('../database/models/character');
 
 module.exports = async (req, res) => {
-    let characterId = req.body.id;
-    let data = req.body;
 
     let handleSuccess = rawData => {
         let status = rawData.lastErrorObject.updatedExisting ? 200 : 201;
@@ -13,6 +11,9 @@ module.exports = async (req, res) => {
         return res.status(400).json(err);
     };
 
+
+    let characterId = req.body.id;
+    let data = req.body;
     await Character.findOneAndUpdate({ id: characterId }, data,
         {
             upsert: true,
