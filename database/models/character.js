@@ -26,6 +26,8 @@ const CharacterSchema = new mongoose.Schema({
     stories: Object,
     events: Object,
     urls: Object,
+}, {
+    versionKey: false,
 });
 
 const Character = mongoose.model('Character', CharacterSchema);
