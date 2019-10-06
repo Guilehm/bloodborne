@@ -6,11 +6,11 @@ module.exports = async (req, res) => {
 
     let handleSuccess = rawData => {
         let status = rawData.lastErrorObject.updatedExisting ? 200 : 201;
-        res.status(status).json(rawData.value);
+        return res.status(status).json(rawData.value);
     };
 
     let handleError = err => {
-        res.status(400).json(err);
+        return res.status(400).json(err);
     };
 
     await Character.findOneAndUpdate({ id: characterId }, data,

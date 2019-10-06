@@ -3,6 +3,7 @@ const Character = require('../database/models/character');
 module.exports = async (req, res) => {
 
     let handleSuccess = data => {
+        if (!data) return handleNotFound();
         return res.json(data);
     };
 
@@ -14,14 +15,11 @@ module.exports = async (req, res) => {
     };
 
     let handleError = data => {
-        return res.status(500).json(data);
+        return res.json(data);
     };
 
     let id = req.params.id;
-    await Character.findOne({ id }, { _id: 0 },
-        (err, character) => {
-            if (!character) handleNotFound();
-            if (err) handleError(err);
-        })
-        .then(handleSuccess, handleError);
+    await Character.findOne({ id }, { _id: 0 })
+        .then(handleSuccess)
+        .catch(handleError);
 };
