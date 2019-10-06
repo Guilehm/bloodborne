@@ -21,10 +21,10 @@ const CharacterSchema = new mongoose.Schema({
         }
     },
     resourceURI: String,
-    comics: String,
-    series: String,
-    stories: String,
-    events: String,
+    comics: Object,
+    series: Object,
+    stories: Object,
+    events: Object,
     urls: Object,
 });
 
