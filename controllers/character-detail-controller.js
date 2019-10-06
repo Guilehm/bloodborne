@@ -1,14 +1,13 @@
 const Character = require('../database/models/character');
 
 module.exports = async (req, res) => {
-    let id = req.params.id;
 
     let handleSuccess = data => {
         return res.json(data);
     };
 
     let handleNotFound = () => {
-        let message = 'Character not found for id';
+        let message = 'Character not found.';
         return res
             .status(404)
             .json({ message });
@@ -18,7 +17,8 @@ module.exports = async (req, res) => {
         return res.status(500).json(data);
     };
 
-    await Character.findOne({ id },
+    let id = req.params.id;
+    await Character.findOne({ id }, { _id: 0 },
         (err, character) => {
             if (!character) handleNotFound();
             if (err) handleError(err);
