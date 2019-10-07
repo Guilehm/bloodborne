@@ -1,3 +1,3 @@
 # Bloodborne
 
-It's responsible to serve Marvel's data
+This project is responsible to serve Marvel's API data.
