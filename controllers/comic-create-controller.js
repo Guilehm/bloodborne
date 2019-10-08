@@ -1,4 +1,5 @@
 const Comic = require('../database/models/comic');
+const logger = require('heroku-logger');
 
 module.exports = async (req, res) => {
 
@@ -8,6 +9,7 @@ module.exports = async (req, res) => {
     };
 
     let handleError = err => {
+        logger.error(err);
         return res.status(400).json(err);
     };
 
