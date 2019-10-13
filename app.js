@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-
+const characterListController = require('./controllers/character-list-controller');
 const characterCreateController = require('./controllers/character-create-controller');
 const characterDetailController = require('./controllers/character-detail-controller');
 const comicCreateController = require('./controllers/comic-create-controller');
