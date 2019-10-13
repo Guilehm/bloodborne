@@ -36,6 +36,7 @@ const storiesCreateController = require('./controllers/stories-create-controller
 const storiesDetailController = require('./controllers/stories-detail-controller');
 
 
+app.get('/api/characters/', characterListController);
 app.get('/api/characters/:id/', characterDetailController);
 app.post('/api/characters/', characterCreateController);
 app.get('/api/comics/:id/', comicDetailController);
