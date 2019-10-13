@@ -16,9 +16,10 @@ module.exports = async (req, res) => {
 
     await Character.find({}, {
         _id: 0,
+        id: 1,
         name: 1,
         thumbnail: 1,
-        url: 1
+        modified: 1,
     })
         .lean()
         .then(handleSuccess)
