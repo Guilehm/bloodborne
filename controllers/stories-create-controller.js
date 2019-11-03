@@ -1,4 +1,4 @@
-const Stories = require('../database/models/stories');
+const Stories = require('../database/models/marvel/stories');
 
 module.exports = async (req, res) => {
 
