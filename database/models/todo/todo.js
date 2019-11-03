@@ -2,15 +2,18 @@ const restful = require('node-restful');
 const mongoose = restful.mongoose;
 
 const todoSchema = new mongoose.Schema({
-    description: {
+    text: {
         type: String,
         required: true,
     },
-    done: {
+    completed: {
         type: Boolean,
         required: true,
         default: false,
-        dateAdded: Date.now,
+    },
+    dateAdded: {
+        type: Date,
+        default: Date.now
     }
 })
 
