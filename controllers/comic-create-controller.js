@@ -1,4 +1,4 @@
-const Comic = require('../database/models/comic');
+const Comic = require('../database/models/marvel/comic');
 const logger = require('heroku-logger');
 
 module.exports = async (req, res) => {
