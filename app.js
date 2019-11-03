@@ -44,6 +44,11 @@ app.post('/api/comics/', comicCreateController);
 app.get('/api/stories/:id/', storiesDetailController);
 app.post('/api/stories/', storiesCreateController);
 
+const todoRouter = express.Router()
+app.use('/api', todoRouter)
+
+const todoService = require('./services/todo-service')
+todoService.register(todoRouter, '/todos')
 
 const PORT = process.env.PORT || 4000;
 
