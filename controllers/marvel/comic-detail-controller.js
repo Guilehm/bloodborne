@@ -1,4 +1,4 @@
-const Stories = require('../database/models/marvel/stories');
+const Comic = require('../../database/models/marvel/comic');
 
 module.exports = async (req, res) => {
 
@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     };
 
     let handleNotFound = () => {
-        let message = 'Stories not found.';
+        let message = 'Comic not found.';
         return res
             .status(404)
             .json({ message });
@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     };
 
     let id = req.params.id;
-    await Stories.findOne({ id }, { _id: 0 })
+    await Comic.findOne({ id }, { _id: 0 })
         .then(handleSuccess)
         .catch(handleError);
 };

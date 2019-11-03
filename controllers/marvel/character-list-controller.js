@@ -1,4 +1,4 @@
-const Character = require('../database/models/marvel/character')
+const Character = require('../../database/models/marvel/character')
 
 module.exports = async (req, res) => {
 

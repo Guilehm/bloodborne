@@ -1,4 +1,4 @@
-const Stories = require('../database/models/marvel/stories');
+const Character = require('../../database/models/marvel/character');
 
 module.exports = async (req, res) => {
 
@@ -12,9 +12,9 @@ module.exports = async (req, res) => {
     };
 
 
-    let storiesId = req.body.id;
+    let characterId = req.body.id;
     let data = req.body;
-    await Stories.findOneAndUpdate({ id: storiesId }, data,
+    await Character.findOneAndUpdate({ id: characterId }, data,
         {
             upsert: true,
             new: true,
