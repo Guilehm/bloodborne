@@ -14,6 +14,10 @@ const todoSchema = new mongoose.Schema({
     dateAdded: {
         type: Date,
         default: Date.now
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 })
 
