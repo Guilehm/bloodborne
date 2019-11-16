@@ -28,13 +28,13 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-const characterListController = require('./controllers/character-list-controller');
-const characterCreateController = require('./controllers/character-create-controller');
-const characterDetailController = require('./controllers/character-detail-controller');
-const comicCreateController = require('./controllers/comic-create-controller');
-const comicDetailController = require('./controllers/comic-detail-controller');
-const storiesCreateController = require('./controllers/stories-create-controller');
-const storiesDetailController = require('./controllers/stories-detail-controller');
+const characterListController = require('./controllers/marvel/character-list-controller');
+const characterCreateController = require('./controllers/marvel/character-create-controller');
+const characterDetailController = require('./controllers/marvel/character-detail-controller');
+const comicCreateController = require('./controllers/marvel/comic-create-controller');
+const comicDetailController = require('./controllers/marvel/comic-detail-controller');
+const storiesCreateController = require('./controllers/marvel/stories-create-controller');
+const storiesDetailController = require('./controllers/marvel/stories-detail-controller');
 
 
 app.get('/api/characters/', characterListController);
@@ -45,6 +45,11 @@ app.post('/api/comics/', comicCreateController);
 app.get('/api/stories/:id/', storiesDetailController);
 app.post('/api/stories/', storiesCreateController);
 
+const todoRouter = express.Router()
+app.use('/api', todoRouter)
+
+const todoService = require('./services/todo-service')
+todoService.register(todoRouter, '/todos')
 
 const PORT = process.env.PORT || 4000;
 

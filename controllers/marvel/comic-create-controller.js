@@ -1,4 +1,5 @@
-const Stories = require('../database/models/stories');
+const Comic = require('../../database/models/marvel/comic');
+const logger = require('heroku-logger');
 
 module.exports = async (req, res) => {
 
@@ -8,13 +9,14 @@ module.exports = async (req, res) => {
     };
 
     let handleError = err => {
+        logger.error(err);
         return res.status(400).json(err);
     };
 
 
-    let storiesId = req.body.id;
+    let comicId = req.body.id;
     let data = req.body;
-    await Stories.findOneAndUpdate({ id: storiesId }, data,
+    await Comic.findOneAndUpdate({ id: comicId }, data,
         {
             upsert: true,
             new: true,
