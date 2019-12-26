@@ -25,4 +25,4 @@ module.exports = async (req, res) => {
     smartcrop.crop(img, { width: width || 348, height: height || 348 })
         .then(handleSuccess)
         .catch(handleError);
-}
+};
