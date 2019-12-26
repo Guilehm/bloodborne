@@ -3,12 +3,39 @@ const axios = require('axios');
 const sharp = require('sharp');
 
 
+const WIDTH_LIMIT = 3840;
+const HEIGHT_LIMIT = 2160;
+
+
+function validateDimensions(width, height) {
+    try {
+        width = parseInt(width);
+        height = parseInt(height);
+    } catch (e) {
+        return [false, e.message];
+    }
+    if (width > WIDTH_LIMIT || height > HEIGHT_LIMIT) {
+        let message = `Images cannot be larger than ${WIDTH_LIMIT} x ${HEIGHT_LIMIT} px.`;
+        return [false, message];
+    }
+    return [true, null, width, height];
+}
+
+
 module.exports = async (req, res) => {
 
     let { url, width, height } = req.query;
     let img;
 
-    if (!url) res.status(400).json({ error: 'Please, provide an url parameter' });
+    let handleBadRequest = error => {
+        return res.status(400).json({ error });
+    };
+
+    if (!url) handleBadRequest('Please, provide an url parameter');
+
+    let [validated, message, vWidth, vHeight] = validateDimensions(width, height);
+    if (!validated) handleBadRequest(message);
+
 
     try {
         const response = await axios.get(url, { responseType: 'arraybuffer' });
