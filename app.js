@@ -18,9 +18,9 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true })
 app.use(morgan('short'));
 app.use(helmet());
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
 app.use(bodyParser.json());
@@ -36,7 +36,8 @@ const comicDetailController = require('./controllers/marvel/comic-detail-control
 const storiesCreateController = require('./controllers/marvel/stories-create-controller');
 const storiesDetailController = require('./controllers/marvel/stories-detail-controller');
 
-const smartcropControler = require('./controllers/smartcrop/smartcrop-controller');
+const smartcropDataControler = require('./controllers/smartcrop/smartcrop-data-controller');
+const smartcropImageControler = require('./controllers/smartcrop/smartcrop-image-controller');
 
 
 app.get('/api/characters/', characterListController);
@@ -47,7 +48,9 @@ app.post('/api/comics/', comicCreateController);
 app.get('/api/stories/:id/', storiesDetailController);
 app.post('/api/stories/', storiesCreateController);
 
-app.get('/api/smartcrop/', smartcropControler);
+app.get('/api/smartcrop/', smartcropDataControler);
+app.post('/api/smartcrop/', smartcropImageControler);
+
 
 const todoRouter = express.Router();
 app.use('/api', todoRouter);
