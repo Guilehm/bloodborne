@@ -49,7 +49,7 @@ app.get('/api/stories/:id/', storiesDetailController);
 app.post('/api/stories/', storiesCreateController);
 
 app.get('/api/smartcrop/', smartcropDataControler);
-app.post('/api/smartcrop/', smartcropImageControler);
+app.get('/api/smartcrop/download/', smartcropImageControler);
 
 
 const todoRouter = express.Router();
