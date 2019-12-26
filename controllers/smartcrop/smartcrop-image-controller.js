@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
     let handleSuccess = crop => {
 
         let handleCropSuccess = crop => {
-            res.writeHead(200, { 'Content-Type': 'image/gif' });
+            res.writeHead(200, { 'Content-Type': 'image/png' });
             return res.end(crop, 'binary');
         }
 
