@@ -17,30 +17,31 @@ module.exports = async (req, res) => {
         return res.status(500).json({ error: err });
     }
 
-    let handleSuccess = crop => {
+    let handleError = error => {
+        return res.status(500).json({ error: error.message });
+    };
 
+
+    let handleSuccess = crop => {
         let handleCropSuccess = crop => {
             res.writeHead(200, { 'Content-Type': 'image/png' });
             return res.end(crop, 'binary');
-        }
+        };
 
         let { x, y } = crop.topCrop;
         let wd = crop.topCrop.width;
         let hg = crop.topCrop.height;
+        vWidth = vWidth || wd;
+        vHeight = vHeight || hg;
+
         sharp(img)
             .extract({ width: wd, height: hg, left: x, top: y })
+            .resize({width: vWidth, height: vHeight})
             .toBuffer()
             .then(handleCropSuccess)
             .catch(handleError);
-    }
-
-    let handleError = err => {
-        console.log('ERROR !!!!!!!!')
-        console.log(err)
-        return res.status(500).json({ error: err })
-    }
-
-    smartcrop.crop(img, { width: width || 10, height: height || 10 })
+    };
+    smartcrop.crop(img)
         .then(handleSuccess)
         .catch(handleError);
-}
+};
