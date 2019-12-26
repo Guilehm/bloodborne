@@ -35,6 +35,8 @@ module.exports = async (req, res) => {
     }
 
     let handleError = err => {
+        console.log('ERROR !!!!!!!!!!!')
+        console.log(err)
         return res.status(500).json({ error: err })
     }
 
