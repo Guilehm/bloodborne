@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Guilehm/bloodborne#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "express": "^4.17.1",
     "helmet": "^3.18.0",
     "heroku-logger": "^0.3.3",
@@ -29,7 +30,8 @@
     "mongoose": "^5.7.3",
     "morgan": "^1.9.1",
     "node-restful": "^0.2.6",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "smartcrop-gm": "^2.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
