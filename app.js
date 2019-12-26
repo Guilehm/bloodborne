@@ -36,7 +36,8 @@ const comicDetailController = require('./controllers/marvel/comic-detail-control
 const storiesCreateController = require('./controllers/marvel/stories-create-controller');
 const storiesDetailController = require('./controllers/marvel/stories-detail-controller');
 
-const smartcropControler = require('./controllers/smartcrop/smartcrop-controller');
+const smartcropDataControler = require('./controllers/smartcrop/smartcrop-data-controller');
+const smartcropImageControler = require('./controllers/smartcrop/smartcrop-image-controller');
 
 
 app.get('/api/characters/', characterListController);
@@ -47,7 +48,9 @@ app.post('/api/comics/', comicCreateController);
 app.get('/api/stories/:id/', storiesDetailController);
 app.post('/api/stories/', storiesCreateController);
 
-app.get('/api/smartcrop/', smartcropControler);
+app.get('/api/smartcrop/', smartcropDataControler);
+app.post('/api/smartcrop/', smartcropImageControler);
+
 
 const todoRouter = express.Router();
 app.use('/api', todoRouter);
