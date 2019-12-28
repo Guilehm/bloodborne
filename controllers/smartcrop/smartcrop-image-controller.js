@@ -41,7 +41,13 @@ module.exports = async (req, res) => {
         const response = await axios.get(url, { responseType: 'arraybuffer' });
         img = response.data;
     } catch (err) {
-        return res.status(500).json({ error: err });
+        if (err.response.status === 403) {
+            url = req.url.split('url=')[1];
+            const response = await axios.get(url, {responseType: 'arraybuffer'});
+            img = response.data;
+        } else {
+            return res.status(500).json({ error: err });
+        }
     }
 
     let handleError = error => {
