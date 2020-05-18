@@ -1,15 +1,30 @@
 const axios = require('axios');
 
 
-const USERNAME = process.env.USERNAME;
-const PASSWORD = process.env.PASSWORD;
+const USERNAME = process.env.COD_USERNAME;
+const PASSWORD = process.env.COD_PASSWORD;
 
 class COD {
     constructor() {
-        this.loginUrl = 'https://profile.callofduty.com/cod/login';
+        this.baseURL = 'https://profile.callofduty.com/';
         this.username = USERNAME;
         this.password = PASSWORD;
-        this.csrf = null;
+        this.setCookie = null;
+    }
+
+    getAxiosInstance() {
+        return axios.create({
+            baseURL: this.baseURL,
+            withCredentials: true,
+        });
+    }
+
+    getCookies() {
+        const setCookie = result => this.setCookie = result.headers['set-cookie'];
+        const instance = this.getAxiosInstance();
+        instance.get('cod/login')
+            .then(setCookie)
+            .catch(err => console.log('deu merda', err));
     }
 }
 
