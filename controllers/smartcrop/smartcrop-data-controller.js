@@ -16,11 +16,9 @@ module.exports = async (req, res) => {
         return res.status(500).json({ error: err });
     }
 
-    let handleSuccess = crop =>
-        res.json(crop);
+    let handleSuccess = crop => res.json(crop);
 
-    let handleError = err =>
-        res.status(500).json({ error: err });
+    let handleError = err => res.status(500).json({ error: err });
 
     smartcrop.crop(img, { width: width || 348, height: height || 348 })
         .then(handleSuccess)
