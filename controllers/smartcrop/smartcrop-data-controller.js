@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     let { url, width, height } = req.query;
     let img;
 
-    if (!url) res.status(400).json({ error: 'Please, provide an url parameter' });
+    if (!url) return res.status(400).json({ error: 'Please, provide an url parameter' });
 
     try {
         const response = await axios.get(url, { responseType: 'arraybuffer' });
