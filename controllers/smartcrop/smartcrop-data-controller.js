@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     if (!url) return res.status(400).json({ error: 'Please, provide an url parameter' });
 
     try {
-        const response = await axios.get(url, { responseType: 'arraybuffer' });
+        const response = await axios.get(encodeURI(url), { responseType: 'arraybuffer' });
         img = response.data;
     } catch (err) {
         return res.status(500).json({ error: err });
