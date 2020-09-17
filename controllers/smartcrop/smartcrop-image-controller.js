@@ -36,9 +36,8 @@ module.exports = async (req, res) => {
     let [validated, message, vWidth, vHeight] = validateDimensions(width, height);
     if (!validated) handleBadRequest(message);
 
-
     try {
-        const response = await axios.get(url, { responseType: 'arraybuffer' });
+        const response = await axios.get(encodeURI(url), { responseType: 'arraybuffer' });
         img = response.data;
     } catch (err) {
         if (err.response.status === 403) {
