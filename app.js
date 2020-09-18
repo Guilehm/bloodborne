@@ -9,7 +9,7 @@ const DEBUG = process.env.DEBUG;
 const app = new express();
 
 
-const mongoUrl = process.env.MONGODB_URI;
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/bloodborne';
 mongoose.connect(mongoUrl, { useNewUrlParser: true })
     .then(() => console.log('Connected to Mongo'))
     .catch(e => console.log('Something went wrong', e));
@@ -36,8 +36,8 @@ const comicDetailController = require('./controllers/marvel/comic-detail-control
 const storiesCreateController = require('./controllers/marvel/stories-create-controller');
 const storiesDetailController = require('./controllers/marvel/stories-detail-controller');
 
-const smartcropDataControler = require('./controllers/smartcrop/smartcrop-data-controller');
-const smartcropImageControler = require('./controllers/smartcrop/smartcrop-image-controller');
+const smartcropDataControler = require('./controllers/crop/smartcrop-data-controller');
+const smartcropImageControler = require('./controllers/crop/smartcrop-image-controller');
 
 
 app.get('/api/characters/', characterListController);
