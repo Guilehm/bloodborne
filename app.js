@@ -38,6 +38,7 @@ const storiesDetailController = require('./controllers/marvel/stories-detail-con
 
 const smartcropDataControler = require('./controllers/crop/smartcrop-data-controller');
 const smartcropImageControler = require('./controllers/crop/smartcrop-image-controller');
+const cropImageControler = require('./controllers/crop/crop-image-controller');
 
 
 app.get('/api/characters/', characterListController);
@@ -50,6 +51,7 @@ app.post('/api/stories/', storiesCreateController);
 
 app.get('/api/smartcrop/', smartcropDataControler);
 app.get('/api/smartcrop/download/', smartcropImageControler);
+app.get('/api/crop/download/', cropImageControler);
 
 
 const todoRouter = express.Router();
