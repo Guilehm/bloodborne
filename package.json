@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Guilehm/bloodborne#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.0",
     "express": "^4.17.1",
     "helmet": "^3.18.0",
     "heroku-logger": "^0.3.3",
